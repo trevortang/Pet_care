@@ -362,11 +362,88 @@
       line-height: 1.85;
     }
 
+    .hero-booking {
+      width: min(100%, 760px);
+      margin-top: 28px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      background: rgba(7, 58, 54, 0.74);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-booking-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 12px;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-booking-title svg {
+      width: 17px;
+      height: 17px;
+      color: var(--butter);
+      flex: none;
+    }
+
+    .hero-booking-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 10px;
+    }
+
+    .hero-booking-field {
+      min-width: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .hero-booking-field span {
+      color: #cfe2dd;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .hero-booking-field input,
+    .hero-booking-field select {
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      padding: 10px 12px;
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 4px;
+      outline: none;
+      background: var(--white);
+      color-scheme: light;
+      font-size: 14px;
+    }
+
+    .hero-booking-field input:focus,
+    .hero-booking-field select:focus {
+      border-color: var(--butter);
+      box-shadow: 0 0 0 3px rgba(241, 199, 91, 0.24);
+    }
+
+    .hero-booking-submit {
+      min-height: 48px;
+      padding-inline: 20px;
+      white-space: nowrap;
+    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 18px;
     }
 
     .hero-note {
@@ -1258,6 +1335,15 @@
         font-size: 16px;
       }
 
+      .hero-booking-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-booking-submit {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
       .hero-note {
         max-width: 460px;
       }
@@ -1421,6 +1507,19 @@
         margin-top: 20px;
         font-size: 15px;
         line-height: 1.8;
+      }
+
+      .hero-booking {
+        margin-top: 24px;
+        padding: 14px;
+      }
+
+      .hero-booking-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-booking-submit {
+        grid-column: auto;
       }
 
       .hero-actions {

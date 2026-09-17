@@ -4,7 +4,6 @@ import { ArrowUpRight, Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import {
   type FormEvent,
-  useEffect,
   useRef,
   useState,
 } from "react";
@@ -18,19 +17,17 @@ import {
 } from "@/lib/content";
 
 export function BookingSection() {
-  const { selectedPlan, setSelectedPlan } = useBookingPlan();
-  const [minDate, setMinDate] = useState("");
+  const {
+    minDate,
+    selectedPlan,
+    setSelectedPlan,
+    selectedDate,
+    setSelectedDate,
+    selectedTime,
+    setSelectedTime,
+  } = useBookingPlan();
   const [submitted, setSubmitted] = useState(false);
   const successRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-
-    setMinDate(`${year}-${month}-${day}`);
-  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,6 +42,8 @@ export function BookingSection() {
     setSubmitted(true);
     form.reset();
     setSelectedPlan("");
+    setSelectedDate("");
+    setSelectedTime("");
 
     window.requestAnimationFrame(() => {
       successRef.current?.scrollIntoView({
@@ -176,6 +175,8 @@ export function BookingSection() {
                 name="booking-date"
                 type="date"
                 min={minDate}
+                value={selectedDate}
+                onChange={(event) => setSelectedDate(event.target.value)}
                 required
               />
             </div>
@@ -185,7 +186,8 @@ export function BookingSection() {
                 id="booking-time"
                 name="booking-time"
                 required
-                defaultValue=""
+                value={selectedTime}
+                onChange={(event) => setSelectedTime(event.target.value)}
               >
                 <option value="">请选择</option>
                 {bookingTimeSlots.map((timeSlot) => (
